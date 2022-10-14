@@ -1,5 +1,6 @@
 package com.dio.webapiswagger.repository;
 
+import com.dio.webapiswagger.handler.CampoObrigatorioException;
 import com.dio.webapiswagger.model.Usuario;
 import org.springframework.stereotype.Repository;
 
@@ -9,6 +10,9 @@ import java.util.List;
 @Repository
 public class UsuarioRepository {
     public void save(Usuario usuario){
+        if(usuario.getLogin()==null)
+            throw new CampoObrigatorioException("login");
+
         if(usuario.getId()==null)
             System.out.println("SAVE - Recebendo o usuário na camada de repositório");
         else
