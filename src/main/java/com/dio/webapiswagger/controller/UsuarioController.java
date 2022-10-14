@@ -14,23 +14,23 @@ public class UsuarioController {
 
     private final UsuarioService usuarioService;
 
-    @GetMapping
+    @GetMapping("/list")
     public List<Usuario> listUsers(){
         return usuarioService.findAll();
     }
-    @PostMapping
+    @PostMapping("/save")
     public void saveUser(@RequestBody Usuario user){
         usuarioService.save(user);
     }
-    @PutMapping
+    @PutMapping("/update")
     public void updateUser(@RequestBody Usuario user){
         usuarioService.save(user);
     }
-    @GetMapping("/{username}")
+    @GetMapping("/find/{username}")
     public Usuario findUser(@PathVariable("username") String username){
         return usuarioService.findByUsername(username);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteUser(@PathVariable("id") Integer id){
         usuarioService.deleteById(id);
     }
